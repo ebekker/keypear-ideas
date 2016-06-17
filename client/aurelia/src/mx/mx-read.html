@@ -1,0 +1,36 @@
+<template>
+    <section class="au-animate">
+            <div style="float: right">Want to <a route-href="route: mx-write">write</a> a message instead?</div>
+            <h2>${heading}</h2>
+        <form role="form" submit.delegate="submit()">
+            <div class="form-group">
+                <label for="messageKey">Message Key</label>
+                <input id="messageKey" type="text" value.bind="messageKey" class="form-control" placeholder="Message Key">
+            </div>
+            <div>
+                <p>
+                    <b><i>Are you ready to read this message?</i></b>
+                </p>
+                <p>
+                    This message can be decrypted and displayed <b>only once</b> and then it will delete itself <b>permanently</b>!
+                </p>
+                <p>
+                    Please be prepared to read and receive this message before proceeding.
+                </p>
+            </div>
+            <div class="form-group">
+                <!--<label for="mesg">Message</label>-->
+                <textarea id="mesg" value.bind="message" class="form-control" placeholder="(Your message will appear here after it is decrypted)" rows="10" readonly="readonly"></textarea>
+            </div>
+            <div class="form-group">
+                <!--<label for="pswd">Password (optional)</label>-->
+                <input id="pswd" type="password" value.bind="password" class="form-control" placeholder="Optional password - MUST match whatever was used to create the message">
+            </div>
+            <div class="form-group">
+                <input id="tos" type="checkbox" checked.bind="tosAgree"> <label for="tos">Agree to Terms</label>
+                <!--<p class="help-block">${fullName | upper}</p>-->
+            </div>
+            <button type="submit" class="btn btn-default" disabled.bind="!canSubmit">Retrieve Message</button>
+        </form>
+    </section>
+</template>

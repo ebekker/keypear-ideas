@@ -1,0 +1,33 @@
+<template>
+  <section class="au-animate">
+    <h2>${heading}</h2>
+    <form role="form" submit.delegate="submit()">
+      <div>
+        <input type="text" value.bind="digInput" class="form-control" />
+      </div>
+      <div>
+        <input type="text" value.bind="digOutput" class="form-control" />
+      </div>
+      <div>
+        <input type="text" value.bind="digOutput2" class="form-control" />
+      </div>
+      <div>
+        <button type="button" click.trigger="doHash()" class="btn btn-default">Digest</button>
+      </div>
+
+      <hr/>
+      <div>
+        <input type="text" value.bind="mkeyPass" class="form-control" />
+      </div>
+      <div>
+        <input type="text" value.bind="mkeySalt" class="form-control" />
+      </div>
+      <div>
+        <button type="button" click.trigger="doDeriveMasterKeyByPbkdf2()" class="btn btn-default">Derive Master Key by PBKDF2</button>
+        <button type="button" click.trigger="doDeriveMasterKeyByScrypt()" class="btn btn-default">Derive Master Key by SCrypt</button>
+      </div>
+      <textarea readonly="readonly" value.bind="buf" style="width: 100%" rows="5"></textarea>
+      <textarea readonly="readonly" value.bind="msg" style="width: 100%" rows="10"></textarea>
+    </form>
+  </section>
+</template>
