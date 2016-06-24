@@ -1,17 +1,51 @@
+<link rel="import" href="/bower_components/iron-form/iron-form.html">
+<link rel="import" href="/bower_components/iron-input/iron-input.html">
+<link rel="import" href="/bower_components/iron-collapse/iron-collapse.html">
+<link rel="import" href="/bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="/bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="/bower_components/paper-button/paper-button.html">
-<link rel="import" href="/bower_components/paper-toast/paper-toast.html">
+<link rel="import" href="/bower_components/paper-input/paper-input.html">
+<link rel="import" href="/bower_components/paper-input/paper-textarea.html">
+<link rel="import" href="/bower_components/paper-input/paper-input-container.html">
+<link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html">
 
 <template>
     <require from="../util/toast"></require>
 
     <h3>Keypear MX - Write Message</h3>
 
-    <div>
-        <paper-button raised click.trigger="computeReadUrl()">Compute Read URL</paper-button>
-    </div>
-    <div>
-        <input type="text" value.bind="readUrl">
-    </div>
+    <section>
+        <iron-collapse opened.bind="readUrl == null">
+            <form is="iron-form">
+                <div>
+                    <paper-textarea name="message" label="message" maxlength="4096" rows="3" max-rows="10"
+                    	    char-counter required auto-validate></paper-textarea>
+                    <paper-input name="password" type="password" label="password (optional)"></paper-input>
+                    <paper-button raised click.trigger="secureMessage()">Secure Message</paper-button>
+                </div>
+            </form>
+        </iron-collapse>
+    </section>
+    <section>
+        <iron-collapse opened.bind="readUrl != null">
+            <div>
+                <paper-input-container always-float-label>
+                    <iron-icon prefix icon="icons:fingerprint"></iron-icon>
+                    <label>Read the message using this URL</label>
+                    <input value.bind="readUrl" readonly="readonly"></input>
+                    <paper-icon-button suffix icon="icons:content-copy"
+                            alt="copy URL" title="copy URL"></paper-icon-button>
+                    <paper-icon-button suffix icon="icons:open-in-browser"
+                            alt="open URL" title="open URL"></paper-icon-button>
+                    <paper-icon-button suffix icon="icons:mail"
+                            alt="email URL (coming soon)" title="email URL (coming soon)"
+                            disabled></paper-icon-button>
+                </paper-input-container>
+
+                <paper-button raised click.trigger="clearMessage()">Clear Message</paper-button>
+            </div>
+        </iron-collapse>
+    </section>
 
     <toast toast-maker.bind="toastMaker"></toast>
 </template>

@@ -1,9 +1,6 @@
 import { Router, RouterConfiguration } from 'aurelia-router';
 
-//import { MxWriteComponent } from './mx-write';
-//import { MxReadComponent } from './mx-read';
-
-export class MxComponent {
+export class MxCustomElement {
   router: Router;
   
   configureRouter(config: RouterConfiguration, router: Router) {
