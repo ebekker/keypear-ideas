@@ -1,0 +1,44 @@
+<h1>Write a Message</h1>
+
+<section [hidden]="false && readUrl != null">
+  <form role="form" (ngSubmit)="submit()">
+    <div class="form-group">
+      <!--<label for="message">Message</label>-->
+      <textarea id="message" [(ngModel)]="message.message" rows="10" required="required"
+      	  class="form-control" placeholder="Write your message here"></textarea>
+    </div>
+    <div class="form-group">
+      <!--<label>Password (optional)</label>-->
+      <input type="password" [(ngModel)]="message.password" class="form-control" placeholder="Password (optional)">
+    </div>
+    <div class="form-group">
+      <input type="checkbox" [(ngModel)]="tosAgree"><label>Agree to Terms</label> ({{tosAgree}})
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-secondary">Submit</button>
+    </div>
+  </form>
+</section>
+<section [hidden]="false && readUrl == null">
+  <form role="form">
+    <div class="form-group">
+      <p>
+        Use the following URL to retrieve and delete the message:
+      </p>
+      <div class="input-group">
+        <label for="readUrl">Read URL:</label>
+        <input id="readUrl" type="text" [(ngModel)]="readUrl" readonly="readonly" class="form-control" #readUrlBox>
+        <div class="input-group-btn">
+          <button type="button" (click)="copyReadUrl(readUrlBox)"
+              class="btn btn-secondary">C</button>
+          <button type="button" (click)="gotoReadUrl()"
+              class="btn btn-secondary">C</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</section>
+<hr>
+Message: {{message}}
+<hr>
+Password:  {{password}}
