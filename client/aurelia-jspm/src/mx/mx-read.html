@@ -1,3 +1,8 @@
 <template>
+    <require from="../util/toast"></require>
+
     <h3>Keypear MX - Read Message</h3>
+
+    <button click.trigger="toast()">toast!</button>
+    <toast toast-maker.bind="toastMaker"></toast>
 </template>

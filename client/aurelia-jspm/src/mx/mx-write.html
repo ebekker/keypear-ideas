@@ -1,3 +1,17 @@
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/bower_components/paper-toast/paper-toast.html">
+
 <template>
+    <require from="../util/toast"></require>
+
     <h3>Keypear MX - Write Message</h3>
+
+    <div>
+        <paper-button raised click.trigger="computeReadUrl()">Compute Read URL</paper-button>
+    </div>
+    <div>
+        <input type="text" value.bind="readUrl">
+    </div>
+
+    <toast toast-maker.bind="toastMaker"></toast>
 </template>
