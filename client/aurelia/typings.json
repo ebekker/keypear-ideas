@@ -37,6 +37,6 @@
     "selenium-webdriver": "github:DefinitelyTyped/DefinitelyTyped/selenium-webdriver/selenium-webdriver.d.ts#24e12a7af994afa2226af70fbfae0adc78736a9e",
     "text-encoding": "github:DefinitelyTyped/DefinitelyTyped/text-encoding/text-encoding.d.ts",
     "base64-js": "registry:npm/base64-js#1.1.2+20160526222755",
-    "datejs": "github:DefinitelyTyped/DefinitelyTyped/datejs/datejs.d.ts"
+    "clipboardjs": "github:DefinitelyTyped/DefinitelyTyped/clipboardjs/clipboardjs.d.ts"
   }
 }

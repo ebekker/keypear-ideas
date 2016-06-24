@@ -21,18 +21,18 @@ export class KeypearMxWrite {
   password: string;
   tosAgree: boolean;
   readUrl = '';
+  thisUrl = '';
 
   constructor(
       private kpApp: KpApp,
-      private kpCrypto: KpCrypto) {}
+      private kpCrypto: KpCrypto,
+      private router: Router) {}
 
-  //Getters can't be directly observed, so they must be dirty checked.
-  //However, if you tell Aurelia the dependencies, it no longer needs to dirty check the property.
-  //To optimize by declaring the properties that this getter is computed from, uncomment the line below
-  //as well as the corresponding import above.
-  //@computedFrom('firstName', 'lastName')
-  get fullName(): string {
-    return ""; //`${this.firstName} ${this.lastName}`;
+  //@computedFrom('tosAgree', 'message')
+  get canSubmit() : boolean {
+    return this.tosAgree
+        && this.message != null
+        && this.message.trim().length > 0;
   }
 
   submit() {
@@ -96,7 +96,9 @@ export class KeypearMxWrite {
                       expiresTS: exp.toISOString(),
                       expiresMS: exp.getTime()
                     }).then(() => {
-                      this.readUrl = `http://localhost:3000/#${mekB64.replace(/\//g, '_')}`;
+                      this.computeReadUrl(mekB64);
+                      this.message = '';
+                      this.password = '';
                     });
                   })
                 });
@@ -107,8 +109,29 @@ export class KeypearMxWrite {
     });
   }
 
+  computeReadUrl(mekB64: string) {
+    this.readUrl = this.router.generate('mx-msg',
+        {msgkey: mekB64.replace(/\//g, '_')},
+        // TODO: This does not appear to be working???
+        {absolute: true});
+
+    // Kludge because Router support for absolute URLs isn't working:
+    if (!this.readUrl.match(/^http/i)) {
+      this.readUrl = `${document.location.origin}/${this.readUrl}`;
+    }
+  }
+
+  copyReadUrl(readUrlTextbox: any) {
+    readUrlTextbox.select();
+    document.execCommand('copy');
+  }
+
+  gotoReadUrl() {
+    alert("Should navigate to: " + this.readUrl);
+  }
+
   canDeactivate(): boolean {
-    if (this.message != null && this.message !== "") {
+    if (this.message != null && this.message != '' && this.readUrl == '') {
       return confirm('You\'ve entered a message without securing it.\r\n'
           + 'Are you sure you want to leave?');
     }

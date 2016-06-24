@@ -51,7 +51,7 @@
     "firebase": "2.4.2",
     "base64-js": "^1.1.2",
     "scryptsy": "^2.0.0",
-    "datejs": "^1.0.0-rc3"
+    "clipboard": "^1.5.12"
   },
   "devDependencies": {
     "aurelia-tools": "^0.1.18",

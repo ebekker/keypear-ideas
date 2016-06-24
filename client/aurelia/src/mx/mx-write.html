@@ -1,5 +1,6 @@
 <template>
-  <section class="au-animate">
+  This URL:  ${thisUrl}
+  <section class="au-animate" hidden.bind="false && readUrl != ''">
     <div style="float: right">Want to <a route-href="route: mx-read">read</a> a message instead?</div>
     <h2>${heading}</h2>
     <form role="form" submit.delegate="submit()">
@@ -15,8 +16,27 @@
         <input id="tos" type="checkbox" checked.bind="tosAgree"> <label for="tos">Agree to Terms</label>
         <!--<p class="help-block">${fullName | upper}</p>-->
       </div>
-      <button type="submit" class="btn btn-default">Secure Message</button>
-      <div><a href.bind="readUrl">${readUrl}</a></div>
+      <button type="submit" class="btn btn-default" disabled.bind="!canSubmit">Secure Message</button>
+    </form>
+  </section>
+  <section class="au-animate" hidden.bind="false && readUrl == ''">
+    <form role="form">
+      <div class="form-group">
+        <p>
+          Use the following URL to retrieve and delete the message:
+        </p>
+        <div class="input-group">
+          <input id="readUrl" value.bind="readUrl" readonly="readonly"  class="form-control"
+              ref="readUrlBox" focus.trigger="readUrlBox.select()">
+          <div class="input-group-btn">
+            <button class="btn btn-secondary" type="button"
+                click.trigger="copyReadUrl(readUrlBox)"><i class="fa fa-copy"></i></button>
+            <button class="btn btn-secondary" type="button"
+                click.trigger="gotoReadUrl()"><i class="fa fa-arrow-circle-right"></i></button>
+          </div>
+        </div>
+        
+      </div>
     </form>
   </section>
 </template>
