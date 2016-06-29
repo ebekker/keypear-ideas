@@ -6,6 +6,7 @@ System.config({
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
   },
+
   meta: {
     "bootstrap": {
       "deps": [
@@ -13,6 +14,7 @@ System.config({
       ]
     }
   },
+
   map: {
     "aurelia-animator-css": "npm:aurelia-animator-css@1.0.0-rc.1.0.0",
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-rc.1.0.0",
@@ -31,6 +33,7 @@ System.config({
     "aurelia-templating-router": "npm:aurelia-templating-router@1.0.0-rc.1.0.0",
     "base64-js": "npm:base64-js@1.1.2",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
+    "clipboard": "npm:clipboard@1.5.12",
     "fetch": "github:github/fetch@1.0.0",
     "font-awesome": "npm:font-awesome@4.6.3",
     "jquery": "npm:jquery@2.2.4",
@@ -215,11 +218,25 @@ System.config({
       "isarray": "npm:isarray@1.0.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
+    "npm:clipboard@1.5.12": {
+      "good-listener": "npm:good-listener@1.1.7",
+      "select": "npm:select@1.0.6",
+      "tiny-emitter": "npm:tiny-emitter@1.1.0"
+    },
+    "npm:closest@0.0.1": {
+      "matches-selector": "npm:matches-selector@0.0.1"
+    },
     "npm:core-util-is@1.0.2": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
     },
+    "npm:delegate@3.0.1": {
+      "closest": "npm:closest@0.0.1"
+    },
     "npm:font-awesome@4.6.3": {
       "css": "github:systemjs/plugin-css@0.1.23"
+    },
+    "npm:good-listener@1.1.7": {
+      "delegate": "npm:delegate@3.0.1"
     },
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
