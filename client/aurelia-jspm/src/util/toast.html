@@ -1,4 +1,14 @@
 <link rel="import" href="/bower_components/paper-toast/paper-toast.html">
 <template>
-    <paper-toast opened repeat.for="m of toastMaker.messages">${m}</paper-toast>
+    <style is="custom-style">
+        #toastMessages {
+            --paper-toast-color: white;
+        }
+        #toastWarnings {
+            --paper-toast-background-color:  goldenrod;
+            --paper-toast-color: blue;
+        }
+    </style>
+    <paper-toast id="toastMessages" opened repeat.for="m of toastMaker.messages">${m}</paper-toast>
+    <paper-toast id="toastWarnings" opened repeat.for="m of toastMaker.warnings">${m}</paper-toast>
 </template>

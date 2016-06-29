@@ -15,8 +15,13 @@ export class ToastCustomElement {
  */
 export class ToastMaker {
     messages = [];
+    warnings = [];
 
     addMessage(msg: string) {
         this.messages.push(msg);
+    }
+
+    addWarning(msg: string) {
+        this.warnings.push(msg);
     }
 }
