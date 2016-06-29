@@ -2,7 +2,8 @@ import { computedFrom, autoinject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 
 import { KpApp } from '../kp-app';
-import { KpCrypto, EphemeralMessage, KpEncoder } from '../util/kp-crypto';
+import { KpEncoder } from '../util/kp-encoder';
+import { KpCrypto, EphemeralMessage } from '../util/kp-crypto';
 import { ToastMaker } from '../util/toast';
 import Clipboard = require('clipboard');
 
@@ -60,20 +61,6 @@ export class MxWriteCustomElement {
         { absolute: true })
 
       this.kpApp.emStore = em;
-    });
-  }
-
-  clearMessage() {
-    let em = new EphemeralMessage()
-    em.saltB64 = this.kpApp.emStore.saltB64;
-    em.ivB64 = this.kpApp.emStore.ivB64;
-    em.messageEncB64 = this.kpApp.emStore.messageEncB64;
-
-    em.mekB64 = this.readUrl;
-
-    KpCrypto.decryptMessage(em, () => {
-      this.message = em.message;
-      this.readUrl = null;
     });
   }
 
