@@ -197,17 +197,3 @@ export class KpCrypto {
     }
 
 }
-
-export class KpEncoder {
-    static base64UrlEncode(dat: string|Uint8Array) : string {
-        if (typeof(dat) == 'Uint8Array') {
-            dat = b64.fromByteArray(dat);
-        }
-        return dat.replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
-    }
-
-    static base64UrlDecode(dat: string) : Uint8Array {
-        dat = dat.replace(/_/g, '/').replace(/\-/g, '+');
-        return b64.toByteArray(dat);
-    }
-}
