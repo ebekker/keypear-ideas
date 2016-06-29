@@ -1,4 +1,4 @@
-import {computedFrom} from 'aurelia-framework';
+import { computedFrom } from 'aurelia-framework';
 
 import { ToastMaker } from '../util/toast';
 
