@@ -203,7 +203,7 @@ export class KpEncoder {
         if (typeof(dat) == 'Uint8Array') {
             dat = b64.fromByteArray(dat);
         }
-        return dat.replace(/\+/g, '-').replace(/\\/g, '_').replace(/=/g, '');
+        return dat.replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
     }
 
     static base64UrlDecode(dat: string) : Uint8Array {
