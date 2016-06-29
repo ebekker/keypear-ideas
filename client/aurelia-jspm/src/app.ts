@@ -1,7 +1,13 @@
-import {Router, RouterConfiguration} from 'aurelia-router';
+import { autoinject } from 'aurelia-framework';
+import { Router, RouterConfiguration } from 'aurelia-router';
 
+import { KpApp } from './kp-app';
+
+@autoinject
 export class App {
   router: Router;
+
+  constructor(private kpApp: KpApp) {}
   
   configureRouter(config: RouterConfiguration, router: Router) {
     config.title = 'Keypear';

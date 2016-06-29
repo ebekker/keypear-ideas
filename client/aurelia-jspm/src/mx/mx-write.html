@@ -43,8 +43,10 @@
                     <paper-input-container always-float-label>
                         <iron-icon prefix icon="icons:fingerprint"></iron-icon>
                         <label>Read the message using this URL</label>
-                        <input value.bind="readUrl" readonly="readonly"></input>
-                        <paper-icon-button suffix icon="icons:content-copy"
+                        <input id="readUrl" value.bind="readUrl" readonly="readonly"></input>
+                        <paper-icon-button suffix icon="icons:content-copy" id="copyReadUrlButton"
+                                data-clipboard-action="copy"
+                                data-clipboard-target="#readUrl"
                                 alt="copy URL" title="copy URL"
                                 click.trigger="copyReadUrl()"></paper-icon-button>
                         <paper-icon-button suffix icon="icons:open-in-browser"
